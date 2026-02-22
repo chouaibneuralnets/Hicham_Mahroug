@@ -1,0 +1,11 @@
+{
+  "name": "Facture App",
+  "short_name": "Facture",
+  "description": "Générateur de factures - Léger, sans installation lourde",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#1a365d",
+  "orientation": "portrait",
+  "icons": []
+}

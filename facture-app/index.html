@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#1a365d">
+  <meta name="description" content="Générateur de factures - Léger et rapide">
+  <title>Facture App</title>
+  <link rel="icon" href="data:,">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>Facture</h1>
+      <nav class="tabs">
+        <button type="button" class="tab active" data-tab="client">Client</button>
+        <button type="button" class="tab" data-tab="facture">Facture</button>
+      </nav>
+    </header>
+
+    <main class="main">
+      <!-- Onglet Client -->
+      <section id="client" class="panel active">
+        <h2>Client</h2>
+        <form id="form-client" class="form">
+          <label>Nom / Raison sociale *</label>
+          <input type="text" name="nomClient" placeholder="ex: SBAI CLIM" required>
+          <label>ICE client</label>
+          <input type="text" name="iceClient" placeholder="ex: 000191504000074">
+          <label>Adresse (optionnel)</label>
+          <input type="text" name="adresseClient" placeholder="Adresse du client">
+          <button type="submit" class="btn btn-primary">Enregistrer client (optionnel)</button>
+        </form>
+      </section>
+
+      <!-- Onglet Facture -->
+      <section id="facture" class="panel">
+        <h2>Nouvelle facture</h2>
+        <form id="form-facture" class="form">
+          <label>Numéro facture</label>
+          <input type="text" name="numeroFacture" id="numeroFacture" placeholder="ex: DEC0038/2025" required>
+          <label>Date</label>
+          <input type="date" name="dateFacture" id="dateFacture" required>
+          <p class="hint">Saisissez les lignes (designation, prix, quantite), puis telechargez la facture.</p>
+
+          <div class="lignes-block">
+            <h3>Lignes de facturation</h3>
+            <div id="lignes-container"></div>
+            <button type="button" id="add-ligne" class="btn btn-secondary">+ Ajouter une ligne</button>
+          </div>
+
+          <div class="totaux-block">
+            <p><strong>TVA %</strong> <input type="number" id="tvaPct" value="20" min="0" max="100" step="0.01"> %</p>
+            <p id="resume-totaux"></p>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Telecharger la facture</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Données enregistrées localement sur votre appareil.</p>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
